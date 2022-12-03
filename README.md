@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# BookiBook
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Simple Book Keeping App, just a demo project
 
 ## Available Scripts
 
