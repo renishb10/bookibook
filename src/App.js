@@ -1,35 +1,22 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useState, useEffect, useContext } from 'react';
 import BookCreate from './components/BookCreate/BookCreate';
 import BookList from './components/BookList/BookList';
+import BookContext from './context/book';
 
 function App() {
-  const [books, setBooks] = useState([]);
 
-  const createBook = (title) => {
-    const updatedBooks = [...books, { id: Math.floor(Math.random() * 9999), title }];
-    setBooks(updatedBooks)
-  }
+  const { fetchBooks } = useContext(BookContext)
 
-  const editBook = (id, newTitle) => {
-    const editedBooks = books.map(b => {
-      if (b.id === id) {
-        return { ...b, title: newTitle };
-      }
-      return b;
-    });
-    setBooks(editedBooks);
-  }
-
-  const removeBook = (id) => {
-    const updatedBooks = books.filter(b => b.id !== id);
-    setBooks(updatedBooks);
-  }
+  useEffect(() => {
+    fetchBooks()
+  }, [])
 
   return (
     <div className='app'>
       <h1>Reading List</h1>
-      <BookCreate onCreate={createBook} />
-      <BookList books={books} onDelete={removeBook} onEdit={editBook} />
+      <BookCreate />
+      <BookList />
     </div>
   )
 }
