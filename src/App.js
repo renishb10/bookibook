@@ -1,5 +1,4 @@
-import axios from 'axios';
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import BookCreate from './components/BookCreate/BookCreate';
 import BookList from './components/BookList/BookList';
 import BookContext from './context/book';
@@ -10,7 +9,7 @@ function App() {
 
   useEffect(() => {
     fetchBooks()
-  }, [])
+  }, [fetchBooks])
 
   return (
     <div className='app'>
